@@ -66,3 +66,50 @@ function changeWindow(newProgramWindow){
     newProgramWindow.resize(new Size(400,300));
     newProgramWindow.move(new Position(100,150));
 }
+
+//Puntos incluidos en la práctica
+
+//Primer codigo
+const size = new Size(1080,764);
+console.log(size.width);
+console.log(size.height);
+
+size.resize(1920,1080);
+console.log(size.width);
+console.log(size.height);
+console.log();
+
+//Segundo codigo
+const point = new Position();
+console.log(point.x);
+console.log(point.y);
+
+point.move(100,200);
+console.log(point.x);
+console.log(point.y);
+console.log();
+
+//Tercer código
+/*const programWindow = new ProgramWindow();
+console.log(programWindow.screenSize.width);
+console.log();*/
+
+//Cuarto código
+/* const programWindow = new ProgramWindow();
+const newSize = new Size(600,400);
+programWindow.resize(newSize);
+console.log(programWindow.size.width);
+console.log(programWindow.size.height); */
+
+//Quinto código
+/* const programWindow = new ProgramWindow();
+
+const newPosition = new Position(50,100);
+programWindow.move(newPosition)
+console.log(programWindow.position.x);
+console.log(programWindow.position.y); */
+
+//Sexto código
+const programWindow = new ProgramWindow();
+changeWindow(programWindow);
+console.log(programWindow.size.width);
