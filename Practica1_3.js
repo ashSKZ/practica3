@@ -21,9 +21,9 @@ class Position{
     }
 }
 
-class ProgramVindow{
+class ProgramWindow{
     constructor(){
-        this.screenSize = new Size(600,800);
+        this.screenSize = new Size(800,600);
         this.size = new Size();
         this.position = new Position();
     }
@@ -60,4 +60,9 @@ class ProgramVindow{
         }
         this.position = newPosition;
     }
+}
+
+function changeWindow(newProgramWindow){
+    newProgramWindow.resize(new Size(400,300));
+    newProgramWindow.move(new Position(100,150));
 }
