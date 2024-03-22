@@ -1,0 +1,92 @@
+class Size {
+    constructor(width = 80, height = 60) {
+        this.width = width;
+        this.height = height;
+    }
+
+    resize(newWidth, newHeight) {
+        this.width = Math.max(1, newWidth);
+        this.height = Math.max(1, newHeight);
+    }
+}
+
+class Position {
+    constructor(x = 0, y = 0) {
+        this.x = x;
+        this.y = y;
+    }
+
+    move(newX, newY) {
+        this.x = Math.max(0, newX);
+        this.y = Math.max(0, newY);
+    }
+}
+
+class ProgramWindow {
+    constructor(screenWidth = 800, screenHeight = 600) {
+        this.screenSize = new Size(screenWidth, screenHeight);
+        this.size = new Size();
+        this.position = new Position();
+    }
+
+    resize(newSize) {
+        const maxWidth = this.screenSize.width - this.position.x;
+        const maxHeight = this.screenSize.height - this.position.y;
+
+        this.size.resize(Math.min(newSize.width, maxWidth), Math.min(newSize.height, maxHeight));
+    }
+
+    move(newPosition) {
+        const maxX = this.screenSize.width - this.size.width;
+        const maxY = this.screenSize.height - this.size.height;
+
+        this.position.move(Math.min(newPosition.x, maxX), Math.min(newPosition.y, maxY));
+    }
+}
+
+function changeWindow(newProgramWindow) {
+    newProgramWindow.resize(new Size(400, 300));
+    newProgramWindow.move(new Position(100, 150));
+    return newProgramWindow;
+}
+
+// Ejemplos del codigo
+const size = new Size(1080, 764);
+console.log(size.width); // Debería imprimir 1080
+console.log(size.height); // Debería imprimir 764
+
+size.resize(1920, 1080);
+console.log(size.width); // Debería imprimir 1920
+console.log(size.height); // Debería imprimir 1080
+console.log();
+
+const point = new Position();
+console.log(point.x); // Debería imprimir 0
+console.log(point.y); // Debería imprimir 0
+
+point.move(100, 200);
+console.log(point.x); // Debería imprimir 100
+console.log(point.y); // Debería imprimir 200
+console.log();
+
+const programWindow = new ProgramWindow();
+console.log(programWindow.screenSize.width); // Debería imprimir 800
+console.log();
+
+const programWindow2 = new ProgramWindow();
+const newSize = new Size(600, 400);
+programWindow2.resize(newSize);
+console.log(programWindow2.size.width); // Debería imprimir 600
+console.log(programWindow2.size.height); // Debería imprimir 400
+console.log();
+
+const programWindow3 = new ProgramWindow();
+const newPosition = new Position(50, 100);
+programWindow3.move(newPosition);
+console.log(programWindow3.position.x); // Debería imprimir 50
+console.log(programWindow3.position.y); // Debería imprimir 100
+console.log();
+
+const programWindow4 = new ProgramWindow();
+changeWindow(programWindow4);
+console.log(programWindow4.size.width); // Debería imprimir 400
